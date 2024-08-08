@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaints Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'comp.css' %}">
+    
+</head>
+<body>
+    <a href="/welcome" class="go-back">Go Back</a>
+    <div class="container">
+        <div class="header">
+            <h1>Follow Ups</h1>
+        </div>
+        <form action="/create_complaint"   method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    
+                    <label for="first-name">First Name</label>
+                    <input type="text" class="form-control" id="first-name" name= "first_name" placeholder="Enter your first name"value="{{user.first_name}}">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" class="form-control" id="last-name"name= "last_name" placeholder="Enter your last name" value="{{user.last_name}}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mobile-number">Mobile Number</label>
+                <input type="tel" class="form-control" id="mobile-number" name= "mobile" placeholder="Enter your mobile number"value="{{user.mobile}}">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" rows="4" name= "description" placeholder="Enter your complaint description"></textarea>
+            </div>
+            <button type="submit" class="btn btn-send">Send</button>
+        </form>
+
+        {% if messages %}
+        <ul class="messages list-group">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }} list-group-item list-group-item-danger m-1"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+            
+        </ul>
+        {% endif %}
+    </div>
+
+  
+</body>
+</html>

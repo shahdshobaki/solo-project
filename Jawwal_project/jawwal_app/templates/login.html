@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href= "static/style.css">
+    
+</head>
+<body>
+    <div class="container mt-5">
+        {% if messages %}
+        <ul class="messages list-group">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }} list-group-item list-group-item-danger m-1"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="text-center mb-4">
+            <img src="{% static 'logo.png' %}" alt="app_logo" class="img-fluid mb-3">
+            <h1 class="mb-3">Reserve Your Showroom Visit</h1>
+            <p class="lead">
+                <span class="font-weight-bold">About the feature:</span> There's no need to wait long at the Showroom. Book your visit according to your free time and come at the scheduled time, that way we save your time.
+            </p>
+        </div>
+
+        <div class="row">
+            <!-- Register Form -->
+            <div class="col-md-6 mb-4">
+                <div class="card p-4">
+                    <h2 class="card-title text-center mb-4">Register</h2>
+                    <form action="/registration" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="first_name">First Name:</label>
+                            <input type="text" id="first_name" name="first_name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Last Name:</label>
+                            <input type="text" id="last_name" name="last_name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="repassword">Re-type Password:</label>
+                            <input type="password" id="repassword" name="repassword" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Login Form -->
+            <div class="col-md-6 mb-4">
+                <div class="card p-4">
+                    <h2 class="card-title text-center mb-4">Login</h2>
+                    <form method="post" action ='/login'>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="login_email">Email:</label>
+                            <input type="email" id="login_email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login_password">Password:</label>
+                            <input type="password" id="login_password" name="password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

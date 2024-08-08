@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Booking</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href= "static/update.css">
+   
+</head>
+<body>
+    <a href="/edit" class="go-back">Go Back</a>
+    <div class="container">
+        <div class="header">
+            <h1>Update Booking</h1>
+        </div>
+        <form action="{% url 'updated' book.id%}"   method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="reason">Reason</label>
+                <select class="form-control" id="reason"value = {book.reason}>
+                    <option value = "Support">Support</option>
+                    <option value = "Jawwal app login">Jawwal app login</option>
+                    <option value = "Balance recharge">Balance recharge</option>
+                    <option value ="Bundles purchases">Bundles purchases</option>
+                    <option value="Deactivated New Connection">Deactivated New Connection</option>
+                    <option value="Service Assistance">Service Assistance</option>
+                    <option value ="Billing Inquiries">Billing Inquiries</option>
+                    <option value = "Device Purchase">Device Purchase</option>
+                    <option value = "Technical the services">Technical the services</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="jawwal-number">Jawwal Number</label>
+                <input type="text" class="form-control" id="jawwal-number" placeholder="Enter Jawwal Number">
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <select class="form-control" id="city"value = {book.city}>
+                    <option value="Ramallah">Ramallah</option>
+                    <option value = "Nablus">Nablus</option>
+                    <option value = "Hebron">Hebron</option>
+                    <option value = "Jerusalem">Jerusalem</option>
+                    <option value = "Bethlahem">Bethlehem</option>
+                    <option value ="Jenin">Jenin</option>
+                    <option value ="Tobas">Tobas</option>
+                    <option Value = "Tulkarem">Tulkarem</option>
+                    <option value="Halhoul">Halhoul</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="showroom-name">Showroom Name</label>
+                <select class="form-control" id="showroom-name"value = {book.showroom_name}>
+                    <option value = "Lacasa Mall showroom">Lacasa Mall showroom</option>
+                    <option value= "Albeireh showroom">Albeireh showroom</option>
+                    <option value ="Al Tereh" >Al Tereh</option>
+                    <option value ="HQ showroom">HQ showroom</option>
+                    <option value = "Nablus Mall showroom">Nablus Mall showroom</option>
+                    <option value ="Rafedya showroom">Rafedya showroom</option>
+                    <option value = "HQ showroom">HQ showroom</option>
+                    <option value ="Bethlehem showroom">Bethlehem showroom</option>
+                    <option value="Jenin Showroom">Jenin Showroom</option>
+                    <option value ="Emtyaz Tubas showroom">Emtyaz Tubas showroom</option>
+                    <option value="Tulkarem Showroom">Tulkarem Showroom</option>
+                    <option value ="Wadi Altufah showroom">Wadi Altufah showroom</option>
+                    <option value ="Hebron center showroom">Hebron center showroom</option>
+                    <option value="Halhoul Showroom">Halhoul Showroom</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="visit-date">Visit Date</label>
+                <input type="date" class="form-control" id="visit-date"value = {book.start_date}>
+            </div>
+            <div class="form-group">
+                <label for="visit-time">Visit Time</label>
+                <input type="time" class="form-control" id="visit-time"value = {book.time}>
+            </div>
+            <button type="submit" class="btn btn-confirm btn-block">Confirm</button>
+        </form>
+    </div>
+
+</body>
+</html>
